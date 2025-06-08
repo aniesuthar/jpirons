@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JP Irons Workshop | Premium Metal Fabrication</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --steel-dark: #2A2D34;
+            --fiery-orange: #FF6B35;
+            --brushed-silver: #C0C0C0;
+            --molten-glow: linear-gradient(90deg, #FF6B35, #FF9E35);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto Condensed', sans-serif;
+            background-color: var(--steel-dark);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(42, 45, 52, 0.9);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: var(--brushed-silver);
+            text-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
+        }
+
+        .logo span {
+            color: var(--fiery-orange);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--brushed-silver);
+            text-decoration: none;
+            font-weight: bold;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--fiery-orange);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--fiery-orange);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            opacity: 0.7;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: white;
+            text-shadow: 0 0 20px rgba(255, 107, 53, 0.8);
+            animation: glow 2s infinite alternate;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--brushed-silver);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--fiery-orange);
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 107, 53, 0.3);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 10%;
+            display: flex;
+            align-items: center;
+            gap: 5rem;
+        }
+
+        .about-img {
+            flex: 1;
+            position: relative;
+        }
+
+        .about-img img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5);
+            transform: perspective(1000px) rotateY(-10deg);
+            transition: transform 0.5s ease;
+        }
+
+        .about-img:hover img {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+
+        .about-content {
+            flex: 1;
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: var(--brushed-silver);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50%;
+            height: 4px;
+            background: var(--fiery-orange);
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            color: var(--brushed-silver);
+        }
+
+        .tools {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .tool {
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .tool i {
+            font-size: 2.5rem;
+            color: var(--fiery-orange);
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .tool h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tool:hover {
+            transform: translateY(-10px);
+        }
+
+        .tool:hover i {
+            transform: scale(1.2);
+            text-shadow: 0 0 15px var(--fiery-orange);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 10%;
+            background: url('metal-texture.jpg') center/cover;
+            position: relative;
+        }
+
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(42, 45, 52, 0.9);
+        }
+
+        .services-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: rgba(42, 45, 52, 0.7);
+            border-radius: 10px;
+            padding: 2rem;
+            transition: all 0.5s ease;
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            backdrop-filter: blur(5px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                transparent,
+                transparent,
+                transparent,
+                rgba(255, 107, 53, 0.1),
+                transparent,
+                transparent,
+                transparent
+            );
+            transform: rotate(30deg);
+            transition: all 0.5s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(255, 107, 53, 0.2);
+            border: 1px solid var(--fiery-orange);
+        }
+
+        .service-card:hover::before {
+            animation: shine 1.5s;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--fiery-orange);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-family: 'Bebas Neue', sans-serif;
+        }
+
+        .service-card p {
+            margin-bottom: 1.5rem;
+            color: var(--brushed-silver);
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 5rem 10%;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            height: 250px;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 107, 53, 0.7);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-overlay p {
+            transform: translateY(20px);
+            transition: all 0.3s ease 0.1s;
+        }
+
+        .gallery-item:hover .gallery-overlay h3,
+        .gallery-item:hover .gallery-overlay p {
+            transform: translateY(0);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 5rem 10%;
+            background: url('rustic-metal.jpg') center/cover;
+            position: relative;
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(42, 45, 52, 0.9);
+        }
+
+        .testimonials-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-slider {
+            margin-top: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-slide {
+            background: rgba(42, 45, 52, 0.7);
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 0 1rem;
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            backdrop-filter: blur(5px);
+            transition: all 0.5s ease;
+        }
+
+        .testimonial-slide:hover {
+            border: 1px solid var(--fiery-orange);
+            transform: translateY(-5px);
+        }
+
+        .testimonial-content {
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            color: var(--brushed-silver);
+            position: relative;
+        }
+
+        .testimonial-content::before,
+        .testimonial-content::after {
+            content: '"';
+            font-size: 3rem;
+            color: var(--fiery-orange);
+            opacity: 0.3;
+            position: absolute;
+        }
+
+        .testimonial-content::before {
+            top: -20px;
+            left: -10px;
+        }
+
+        .testimonial-content::after {
+            bottom: -40px;
+            right: -10px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 1rem;
+            border: 2px solid var(--fiery-orange);
+        }
+
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .author-info p {
+            color: var(--brushed-silver);
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 10%;
+            display: flex;
+            gap: 5rem;
+        }
+
+        .contact-form {
+            flex: 1;
+            background: rgba(42, 45, 52, 0.7);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--brushed-silver);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(42, 45, 52, 0.5);
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            border-radius: 4px;
+            color: white;
+            font-family: 'Roboto Condensed', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--fiery-orange);
+            box-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .contact-map {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        .contact-map iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 400px;
+            border: none;
+        }
+
+        .map-pin {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--fiery-orange);
+            font-size: 2rem;
+            animation: pulse 2s infinite;
+        }
+
+        /* Footer */
+        footer {
+            background: #1E1F26;
+            padding: 3rem 10%;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: var(--brushed-silver);
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo span {
+            color: var(--fiery-orange);
+        }
+
+        .footer-links h3,
+        .footer-contact h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--brushed-silver);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--brushed-silver);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--fiery-orange);
+        }
+
+        .footer-contact p {
+            margin-bottom: 0.5rem;
+            color: var(--brushed-silver);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 107, 53, 0.2);
+            border-radius: 50%;
+            color: var(--brushed-silver);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--fiery-orange);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            margin-top: 2rem;
+            color: var(--brushed-silver);
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
+            }
+            to {
+                text-shadow: 0 0 20px rgba(255, 107, 53, 0.8), 0 0 30px rgba(255, 107, 53, 0.6);
+            }
+        }
+
+        @keyframes shine {
+            0% {
+                transform: rotate(30deg) translate(-30%, -30%);
+            }
+            100% {
+                transform: rotate(30deg) translate(30%, 30%);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.2);
+                opacity: 0.7;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Scroll Reveal Animation */
+        .reveal {
+            position: relative;
+            transform: translateY(50px);
+            opacity: 0;
+            transition: all 1s ease;
+        }
+
+        .reveal.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about,
+            .contact {
+                flex-direction: column;
+                gap: 3rem;
+            }
+
+            .about-img img {
+                transform: perspective(1000px) rotateY(0deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: var(--steel-dark);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.5s ease;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .tools {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .btn {
+                padding: 0.8rem 1.5rem;
+            }
+
+            .service-card,
+            .gallery-item {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo"><span>JP</span>IRONS</div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <video class="hero-video" autoplay muted loop>
+            <source src="https://videos.pexels.com/video-files/32399835/13820827_2560_1440_30fps.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="hero-content">
+            <h1 class="reveal">Precision Ironwork</h1>
+            <p class="reveal">Forged to Last · Crafted to Inspire</p>
+            <a href="#contact" class="btn reveal">Get a Free Quote</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-img reveal">
+            <img src=https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="JP Irons Workshop">
+        </div>
+        <div class="about-content">
+            <h2 class="section-title reveal">About Us</h2>
+            <p class="reveal">Since 1985, JP Irons Workshop has been crafting premium metalwork with uncompromising quality. Our master blacksmiths combine traditional techniques with modern innovation.</p>
+            <p class="reveal">Every piece is hand-forged with attention to detail that only comes from decades of experience working with iron and steel.</p>
+            <div class="tools">
+                <div class="tool reveal">
+                    <i class="fas fa-hammer"></i>
+                    <h3>Hand-Forged</h3>
+                    <p>Traditional techniques</p>
+                </div>
+                <div class="tool reveal">
+                    <i class="fas fa-fire"></i>
+                    <h3>Heat-Treated</h3>
+                    <p>Maximum durability</p>
+                </div>
+                <div class="tool reveal">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Lifetime Warranty</h3>
+                    <p>On all our work</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="services-container">
+            <h2 class="section-title reveal">Our Services</h2>
+            <p class="reveal" style="text-align: center; max-width: 800px; margin: 0 auto;">From residential elegance to industrial strength, we fabricate metalwork that stands the test of time.</p>
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <i class="fas fa-archway"></i>
+                    </div>
+                    <h3>Custom Gates</h3>
+                    <p>Handcrafted wrought iron gates that provide security without compromising on aesthetics.</p>
+                    <a href="#contact" class="btn">Inquire</a>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <i class="fas fa-grip-lines"></i>
+                    </div>
+                    <h3>Security Grills</h3>
+                    <p>Strong, durable window and door security solutions with elegant designs.</p>
+                    <a href="#contact" class="btn">Inquire</a>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <i class="fas fa-hand-holding"></i>
+                    </div>
+                    <h3>Handrails</h3>
+                    <p>Custom stair railings that combine safety with artistic craftsmanship.</p>
+                    <a href="#contact" class="btn">Inquire</a>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3>Industrial Fabrication</h3>
+                    <p>Heavy-duty metal components for commercial and industrial applications.</p>
+                    <a href="#contact" class="btn">Inquire</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <h2 class="section-title reveal">Our Work</h2>
+        <p class="reveal" style="text-align: center; max-width: 800px; margin: 0 auto 3rem;">Browse our portfolio of completed projects showcasing the quality and diversity of our metalwork.</p>
+        <div class="gallery-grid">
+            <div class="gallery-item reveal">
+                <img src="https://i.pinimg.com/736x/20/b4/6f/20b46f3174844ac5b0921291b9aaed6c.jpg" alt="Custom Wrought Iron Gate">
+                <div class="gallery-overlay">
+                    <h3>Luxury Estate Gate</h3>
+                    <p>Wrought Iron · Scrollwork Design</p>
+                </div>
+            </div>
+            <div class="gallery-item reveal">
+                <img src="https://i.pinimg.com/736x/20/b4/6f/20b46f3174844ac5b0921291b9aaed6c.jpg" alt="Custom Stair Railing">
+                <div class="gallery-overlay">
+                    <h3>Spiral Staircase</h3>
+                    <p>Brass & Steel · Modern Design</p>
+                </div>
+            </div>
+            <div class="gallery-item reveal">
+                <img src="https://i.pinimg.com/736x/20/b4/6f/20b46f3174844ac5b0921291b9aaed6c.jpg" alt="Security Grill">
+                <div class="gallery-overlay">
+                    <h3>Artistic Window Guards</h3>
+                    <p>Steel · Floral Pattern</p>
+                </div>
+            </div>
+            <div class="gallery-item reveal">
+                <img src="https://i.pinimg.com/736x/20/b4/6f/20b46f3174844ac5b0921291b9aaed6c.jpg" alt="Metal Furniture">
+                <div class="gallery-overlay">
+                    <h3>Industrial Furniture</h3>
+                    <p>Steel & Reclaimed Wood</p>
+                </div>
+            </div>
+          
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="testimonials-container">
+            <h2 class="section-title reveal">Client Testimonials</h2>
+            <p class="reveal" style="text-align: center; max-width: 800px; margin: 0 auto;">Don't just take our word for it - hear what our clients say about working with JP Irons.</p>
+            <div class="testimonial-slider">
+                <div class="testimonial-slide reveal">
+                    <div class="testimonial-content">
+                       JP Irons transformed our entire property with their stunning gates and railings. The craftsmanship is exceptional and their attention to detail is unmatched in the industry.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLh-59QZ1ZkSv8eMIcAQD8vUF3fGDi0_LsGw&s" alt="Sarah Johnson">
+                        </div>
+                        <div class="author-info">
+                            <h4>Px Punit</h4>
+                            <p>Residential Client</p>
+                        </div>
+                    </div>
+                </div>
+              
+                <div class="testimonial-slide reveal">
+                    <div class="testimonial-content">
+                        The custom metal art piece they created for our lobby has become the centerpiece of our building. Visitors can't stop talking about it. True artisans!
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcRbfDdCzWFWLRriIxIU87mQC_wEtSVO_T_PGzqLi23R3c1lRPymRe9Wb7wsslV2-w0LOX12VMv-YY4S9pV5zvAoyszwgd4gnVzS-GjuCrjLImYb35WrU5FBtE8ipxFKTBkaNS_ya4apnQ" alt="David Rodriguez">
+                        </div>
+                        <div class="author-info">
+                            <h4>Vijay ji</h4>
+                            <p>Corporate Client</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-form reveal">
+            <h2 class="section-title">Get In Touch</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="project">Project Type</label>
+                    <select id="project" class="form-control">
+                        <option value="">Select a project type</option>
+                        <option value="gate">Custom Gate</option>
+                        <option value="railing">Stair Railing</option>
+                        <option value="grill">Security Grill</option>
+                        <option value="furniture">Metal Furniture</option>
+                        <option value="art">Metal Art</option>
+                        <option value="commercial">Commercial Project</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Project Details</label>
+                    <textarea id="message" class="form-control" required></textarea>
+                </div>
+                <button type="submit" class="btn">Send Your Blueprint</button>
+            </form>
+        </div>
+        <div class="contact-map reveal">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d879.9551799160163!2d74.01982996942301!3d28.09101097931414!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39153d656cbded8b%3A0x60ab7ef54b86f17a!2sJP%20irons!5e0!3m2!1shi!2sin!4v1749396764543!5m2!1shi!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215209179035!2d-73.98784492423948!3d40.74844097138982!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1689876423585!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+            <div class="map-pin">
+                <i class="fas fa-map-marker-alt"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-about">
+                <div class="footer-logo"><span>JP</span>IRONS</div>
+                <p>Precision metal fabrication since 1985. Combining traditional craftsmanship with modern innovation.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Jp irons near by Inder lok hotel</p>
+                <p><i class="fas fa-phone"></i> +918696966815</p>
+                <p><i class="fas fa-envelope"></i> info@jpirons.com</p>
+            </div>
+        </div>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-pinterest-p"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <div class="copyright">
+            &copy; 2023 JP Irons Workshop. All Rights Reserved.
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.querySelector('i').classList.toggle('fa-times');
+        });
+
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                navLinks.classList.remove('active');
+                menuToggle.querySelector('i').classList.remove('fa-times');
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Scroll Reveal Animation
+        function reveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const revealTop = reveals[i].getBoundingClientRect().top;
+                const revealPoint = 150;
+                
+                if (revealTop < windowHeight - revealPoint) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+
+        window.addEventListener('scroll', reveal);
+        window.addEventListener('load', reveal);
+
+        // Testimonial Slider
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.testimonial-slide');
+        
+        function showSlide(n) {
+            slides.forEach(slide => {
+                slide.style.display = 'none';
+            });
+            
+            currentSlide = (n + slides.length) % slides.length;
+            slides[currentSlide].style.display = 'block';
+        }
+        
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+        
+        // Auto-rotate testimonials every 5 seconds
+        showSlide(0);
+        setInterval(nextSlide, 5000);
+
+        // Form Submission
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const project = document.getElementById('project').value;
+            
+            // Here you would typically send the data to a server
+            console.log('Form submitted:', { name, email, project });
+            
+            // Show success message
+            alert(`Thank you, ${name}! We've received your inquiry about ${project || 'your project'}. We'll contact you soon at ${email}.`);
+            
+            // Reset form
+            contactForm.reset();
+        });
+
+        // Header Scroll Effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(42, 45, 52, 0.95)';
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.3)';
+            } else {
+                header.style.background = 'rgba(42, 45, 52, 0.9)';
+                header.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
